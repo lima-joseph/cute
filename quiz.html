@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Perguntas para Minha Namorada</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        h1{
+            color: rgb(85, 46, 80);
+        }
+        body{
+            background-color: rgb(255, 191, 246);
+        }
+        .btn{
+            background-color: rgb(133, 43, 121);
+            border-color: rgb(133, 43, 121);
+        }
+        .btn:hover{
+            background-color: rgb(133, 43, 121);
+            border-color: rgb(133, 43, 121);
+        }
+        .btn:active{
+            background-color: rgb(133, 43, 121);
+            border-color: rgb(133, 43, 121);
+        }
+        .card {
+            margin: 20px 0;
+            background-color: rgb(250, 208, 244);
+        }
+        #finalResult {
+            display: none;
+        }
+        .progress {
+            height: 30px;
+        }
+        #resultGif {
+            display: none;
+            width: 100px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body style="color: rgb(85, 46, 80);">
+    <div class="container mt-5">
+        <a href="home.html" class="btn mb-3" style="color: white;">Voltar</a>
+
+        <h1 class="text-center">Jogo de Perguntas para Futura Minha Namorada</h1>
+
+        <div id="quiz-container">
+            <div class="card" id="pergunta1">
+                <div class="card-body">
+                    <h5 class="card-title">1. Qual é a minha cor favorita?</h5>
+                    <input type="text" class="form-control" id="resposta1" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta2">
+                <div class="card-body">
+                    <h5 class="card-title">2. Qual é o meu prato favorito?</h5>
+                    <input type="text" class="form-control" id="resposta2" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta3">
+                <div class="card-body">
+                    <h5 class="card-title">3. Em que cidade eu nasci?</h5>
+                    <input type="text" class="form-control" id="resposta3" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta4">
+                <div class="card-body">
+                    <h5 class="card-title">4. Qual é a minha data de nascimento?</h5>
+                    <input type="date" class="form-control" id="resposta4">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta5">
+                <div class="card-body">
+                    <h5 class="card-title">5. Qual foi o meu cpf ?</h5>
+                    <input type="text" class="form-control" id="resposta5" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta6">
+                <div class="card-body">
+                    <h5 class="card-title">6. Qual é jogo que eu mais gosto?</h5>
+                    <input type="text" class="form-control" id="resposta6" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta7">
+                <div class="card-body">
+                    <h5 class="card-title">7. Qual é o meu cantor favorito?</h5>
+                    <input type="text" class="form-control" id="resposta7" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta8">
+                <div class="card-body">
+                    <h5 class="card-title">8. Qual é o meu nome completo?</h5>
+                    <input type="text" class="form-control" id="resposta8" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta9">
+                <div class="card-body">
+                    <h5 class="card-title">9. Qual é o meu animal favorito?</h5>
+                    <input type="text" class="form-control" id="resposta9" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta10">
+                <div class="card-body">
+                    <h5 class="card-title">10. Aonde eu trabalho?</h5>
+                    <input type="text" class="form-control" id="resposta10" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta11">
+                <div class="card-body">
+                    <h5 class="card-title">11. Qual setor eu trabalho?</h5>
+                    <input type="text" class="form-control" id="resposta11" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta12">
+                <div class="card-body">
+                    <h5 class="card-title">12. Oque eu mais gosto em vc?</h5>
+                    <input type="text" class="form-control" id="resposta12" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta13">
+                <div class="card-body">
+                    <h5 class="card-title">13. Qual meu filme favorito?</h5>
+                    <input type="text" class="form-control" id="resposta13" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta14">
+                <div class="card-body">
+                    <h5 class="card-title">14. Qual numero (tenis) eu calço?</h5>
+                    <input type="text" class="form-control" id="resposta14" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta15">
+                <div class="card-body">
+                    <h5 class="card-title">15. Qual tamanho de camisa eu visto?</h5>
+                    <input type="text" class="form-control" id="resposta15" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta16">
+                <div class="card-body">
+                    <h5 class="card-title">16. Que bairro eu moro?</h5>
+                    <input type="text" class="form-control" id="resposta16" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta17">
+                <div class="card-body">
+                    <h5 class="card-title">17. Qual é o minha profissao dos sonhos? ?</h5>
+                    <input type="text" class="form-control" id="resposta17" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+            <div class="card d-none" id="pergunta18">
+                <div class="card-body">
+                    <h5 class="card-title">18. Qual é o meu jogador de futebol favorito?</h5>
+                    <input type="text" class="form-control" id="resposta18" placeholder="Digite sua resposta aqui">
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-secondary mt-3" id="back-button" style="display:none;">Voltar</button>
+        <button class="btn btn-primary mt-3" id="next-button">Próxima Pergunta</button>
+
+        <div id="finalResult" class="text-center mt-4">
+            <h5 id="finalMessage"></h5>
+            <h5 id="lovePercentage"></h5>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <a href="draw.html" class="btn" id="Desenhar">Desenhar</a>
+        </div>
+
+        <div class="modal fade" id="modalErro" tabindex="-1" aria-labelledby="modalErroLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalErroLabel">Erro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Por favor, preencha todos os campos antes de prosseguir.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary mt-5" data-dismiss="modal" style="color: white;">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let currentQuestion = 1;
+            let correctAnswers = 0;
+            const totalQuestions = 18; // Total de perguntas
+
+            // Respostas corretas (substitua conforme necessário)
+            const correctResponses = [
+                "azul", // Resposta para a pergunta 1
+                "lasanha", // Resposta para a pergunta 2
+                "aldeias altas", // Resposta para a pergunta 3
+                "2007-07-09", // Resposta para a pergunta 4 (data)
+                "60865469326", // Resposta para a pergunta 5
+                "valorant", // Resposta para a pergunta 6
+                "kyan", // Resposta para a pergunta 7
+                "joseph boniphacio araujo dos santos lima", // Resposta para a pergunta 8
+                "gato", // Resposta para a pergunta 9
+                "flex", // Resposta para a pergunta 10
+                "marketing", // Resposta para a pergunta 15
+                "voce", // Resposta para a pergunta 11
+                "interestellar", // Resposta para a pergunta 12
+                "40", // Resposta para a pergunta 13
+                "g", // Resposta para a pergunta 14
+                "jardim esmeralda", // Resposta para a pergunta 16
+                "programador", // Resposta para a pergunta 17
+                "neymar", // Resposta para a pergunta 18
+            ];
+
+            function showQuestion() {
+                $('.card').addClass('d-none');
+                $(`#pergunta${currentQuestion}`).removeClass('d-none');
+                $('#back-button').toggle(currentQuestion > 1);
+                $('#next-button').text(currentQuestion === totalQuestions ? 'Finalizar' : 'Próxima Pergunta');
+            }
+
+            $('#next-button').click(function() {
+                const response = $(`#resposta${currentQuestion}`).val();
+                if (!response) {
+                    $('#modalErro').modal('show');
+                    return;
+                }
+                // Verifica se a resposta está correta
+                if (response.toLowerCase() === correctResponses[currentQuestion - 1]) {
+                    correctAnswers++;
+                }
+                currentQuestion++;
+                if (currentQuestion > totalQuestions) {
+                    const percentage = (correctAnswers / totalQuestions) * 100;
+                    $('#finalMessage').text(`Você me ama em ${Math.round(percentage)}%!`);
+                    $('#lovePercentage').text(`Você acertou ${correctAnswers} de ${totalQuestions} perguntas.`);
+                    $('#progressBar').css('width', percentage + '%').attr('aria-valuenow', percentage);
+                    $('#finalResult').show();
+                    $('#quiz-container').hide();
+                } else {
+                    showQuestion();
+                }
+            });
+
+            $('#back-button').click(function() {
+                currentQuestion--;
+                showQuestion();
+            });
+
+            showQuestion();
+        });
+    </script>
+</body>
+</html>
