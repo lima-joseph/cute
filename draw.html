@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Drawing App</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body, html {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(255, 191, 246);;
+            margin: 0;
+        }
+        #drawing-board {
+            border: 2px solid #333;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 10; /* proporção de 800x500 */
+            touch-action: none;
+        }
+        .card {
+            max-width: 95vw;
+        }
+
+        h1{
+            color: rgb(85, 46, 80);
+        }
+        body{
+            background-color: rgb(255, 191, 246);
+        }
+        .btn{
+            background-color: rgb(133, 43, 121);
+            border-color: rgb(133, 43, 121);
+        }
+        .btn:hover{
+            background-color: rgb(133, 43, 121);
+            border-color: rgb(133, 43, 121);
+        }
+        .btn:active{
+            background-color: rgb(133, 43, 121);
+            border-color: rgb(133, 43, 121);
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        
+        <div class="card shadow-lg p-4">
+            <h2 class="card-title">Desenha oq vc quiser aq :)</h2>
+            <canvas id="drawing-board" class="mb-3"></canvas>
+            
+            <div class="controls d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-3">
+                <div class="input-group" style="width: 150px;">
+                    <label class="input-group-text" for="color-picker">Cor</label>
+                    <input type="color" id="color-picker" class="form-control form-control-color" value="#000000">
+                </div>
+
+                <div class="input-group" style="width: 150px;">
+                    <label class="input-group-text" for="brush-size">Tamanho</label>
+                    <input type="range" id="brush-size" class="form-range" min="1" max="20" value="5">
+                </div>
+
+                <button id="clear-button" class="btn btn-danger">Limpar</button>
+            </div>
+        </div>
+        <a href="home.html" class="btn text-start mt-4" style="color: white;">Voltar</a>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('drawing-board');
+        const ctx = canvas.getContext('2d');
+        const colorPicker = document.getElementById('color-picker');
+        const brushSize = document.getElementById('brush-size');
+        const clearButton = document.getElementById('clear-button');
+
+        let drawing = false;
+
+        // Ajusta o tamanho do canvas para a resolução inicial da tela
+        function setupCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+
+        // Função para capturar coordenadas de toque e mouse de forma precisa
+        function getCanvasCoordinates(event) {
+            const rect = canvas.getBoundingClientRect();
+            const x = (event.clientX || event.touches[0].clientX) - rect.left;
+            const y = (event.clientY || event.touches[0].clientY) - rect.top;
+            return { x, y };
+        }
+
+        function startDrawing(event) {
+            drawing = true;
+            const coords = getCanvasCoordinates(event);
+            ctx.beginPath();
+            ctx.moveTo(coords.x, coords.y);
+        }
+
+        function stopDrawing() {
+            drawing = false;
+            ctx.beginPath();
+        }
+
+        function draw(event) {
+            if (!drawing) return;
+            const coords = getCanvasCoordinates(event);
+            ctx.lineWidth = brushSize.value;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = colorPicker.value;
+
+            ctx.lineTo(coords.x, coords.y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(coords.x, coords.y);
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Eventos de mouse
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mousemove', draw);
+
+        // Eventos de toque para mobile
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startDrawing(e); });
+        canvas.addEventListener('touchend', (e) => { e.preventDefault(); stopDrawing(); });
+        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); });
+
+        clearButton.addEventListener('click', clearCanvas);
+
+        // Configuração inicial do canvas ao carregar
+        window.addEventListener('load', setupCanvas);
+        window.addEventListener('resize', setupCanvas); // Mantém responsividade ao redimensionar
+    </script>
+    
+    <!-- Bootstrap JS (opcional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
